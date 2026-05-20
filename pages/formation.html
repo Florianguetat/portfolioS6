@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<!-- pages/formation.html — Portfolio Florian GUETAT -->
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formation | Florian GUETAT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <link rel="stylesheet" href="../css/options.css">
+</head>
+<body>
+  <div id="cursor"></div>
+  <div id="cursor-trail"></div>
+  <div id="translate-bar"><div id="translate-progress"></div></div>
+
+  <nav id="sidebar">
+    <div class="sidebar-logo">FG</div>
+    <div class="sidebar-sep"></div>
+    <button class="nav-btn" data-page="accueil" onclick="goTo('accueil.html')" title="Accueil">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span class="nav-label" data-key="nav-accueil">accueil</span>
+      <span class="tooltip" data-key="nav-accueil">Accueil</span>
+    </button>
+    <button class="nav-btn" data-page="apropos" onclick="goTo('apropos.html')" title="À propos">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <span class="nav-label" data-key="nav-apropos">à propos</span>
+      <span class="tooltip" data-key="nav-apropos">À propos</span>
+    </button>
+    <button class="nav-btn active" data-page="formation" onclick="goTo('formation.html')" title="Formation">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+      <span class="nav-label" data-key="nav-formation">formation</span>
+      <span class="tooltip" data-key="nav-formation">Formation</span>
+    </button>
+    <button class="nav-btn" data-page="experiences" onclick="goTo('experiences.html')" title="Expériences">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+      <span class="nav-label" data-key="nav-exp">expériences</span>
+      <span class="tooltip" data-key="nav-exp">Expériences</span>
+    </button>
+    <button class="nav-btn" data-page="competences" onclick="goTo('competences.html')" title="Compétences">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      <span class="nav-label" data-key="nav-comp">compétences</span>
+      <span class="tooltip" data-key="nav-comp">Compétences</span>
+    </button>
+    <button class="nav-btn" data-page="projets" onclick="goTo('projets.html')" title="Projets">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+      <span class="nav-label" data-key="nav-projets">projets</span>
+      <span class="tooltip" data-key="nav-projets">Projets</span>
+    </button>
+    <button class="nav-btn" data-page="divers" onclick="goTo('divers.html')" title="Divers">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>
+      <span class="nav-label" data-key="nav-divers">divers</span>
+      <span class="tooltip" data-key="nav-divers">Divers</span>
+    </button>
+    <button class="nav-btn" data-page="cv" onclick="goTo('cv.html')" title="CV">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      <span class="nav-label">cv</span>
+      <span class="tooltip">CV</span>
+    </button>
+    <button class="nav-btn" data-page="contact" onclick="goTo('contact.html')" title="Contact">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      <span class="nav-label" data-key="nav-contact">contact</span>
+      <span class="tooltip" data-key="nav-contact">Contact</span>
+    </button>
+  </nav>
+
+  <main id="main">
+    <section id="page-formation" class="page active">
+      <!-- En-tête de page -->
+      <div class="ph">
+        <div class="ph-left">
+          <div class="ph-eyebrow" data-key="ph-form-ey">placeholder</div>
+          <div class="ph-title"   data-key="ph-form-t">placeholder</div>
+        </div>
+        <div class="ph-line"></div>
+      </div>
+      <!-- Contenu -->
+
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">2023 → <span data-key="now">Aujourd'hui</span></div>
+          <div class="tl-card">
+            <h3>BUT Réseaux &amp; Télécommunications</h3>
+            <div class="tl-loc">📍 IUT d'Aubière — Université Clermont Auvergne (63)</div>
+            <p data-key="form1-desc">Formation en alternance couvrant les réseaux, la téléphonie, la cybersécurité, l'administration système et le développement. Validation de la 2e année en juin 2025.</p>
+            <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:6px;">
+              <span class="tag tag-accent">Réseaux</span><span class="tag tag-accent">Linux</span><span class="tag tag-accent">Cybersécurité</span><span class="tag tag-accent">Téléphonie IP</span><span class="tag tag-accent">Python</span>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">Juin 2023</div>
+          <div class="tl-card">
+            <h3 data-key="form2-t">Baccalauréat Général — Mention Assez Bien</h3>
+            <div class="tl-loc">📍 Lycée Louis Lachenal — Argonay (74)</div>
+            <p data-key="form2-desc">Spécialités : Mathématiques Expertes &amp; NSI (Numérique et Sciences Informatiques).</p>
+            <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:6px;">
+              <span class="tag">Mathématiques</span><span class="tag">NSI</span>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">2021 – 2022</div>
+          <div class="tl-card">
+            <h3 data-key="form3-t">Section Sportive Arbitre Football</h3>
+            <div class="tl-loc">📍 Lycée Frédéric Faÿs — Villeurbanne (69)</div>
+            <p data-key="form3-desc">Section sportive dédiée à l'arbitrage de football, développant rigueur et prise de décision sous pression.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="../js/navigation.js"></script>
+  <script src="../js/skills.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/options.js"></script>
+  <script src="../js/lang.js"></script>
+  <script src="../js/contact.js"></script>
+</body>
+</html>
