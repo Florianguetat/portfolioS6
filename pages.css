@@ -1,0 +1,793 @@
+/* ============================================================
+   css/pages.css
+   Styles propres à chaque page du portfolio :
+   accueil, à propos, formation, expériences, compétences,
+   projets, divers, CV, contact.
+   ============================================================ */
+
+
+/* ╔══════════════════════════════════════════════════════════╗
+   ║  PAGE ACCUEIL                                            ║
+   ╚══════════════════════════════════════════════════════════╝ */
+
+#page-accueil {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ── Orbes d'arrière-plan (effets lumineux flous) ────────── */
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+}
+.orb1 {
+  width: 500px; height: 500px;
+  background: var(--accent);
+  opacity: 0.09;
+  top: -120px; right: -80px;
+  animation: orb-float 9s ease-in-out infinite;
+}
+.orb2 {
+  width: 300px; height: 300px;
+  background: var(--accent2);
+  opacity: 0.07;
+  bottom: 50px; right: 220px;
+  animation: orb-float 11s ease-in-out infinite reverse;
+}
+.orb3 {
+  width: 350px; height: 350px;
+  background: var(--accent3);
+  opacity: 0.05;
+  bottom: 100px; left: 10%;
+  animation: orb-float 7s ease-in-out infinite;
+}
+
+/* ── Eyebrow (ligne au-dessus du nom) ────────────────────── */
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  margin-bottom: 22px;
+}
+
+/* Petite ligne décorative avant le texte */
+.hero-eyebrow::before {
+  content: '';
+  width: 32px;
+  height: 1px;
+  background: var(--accent);
+}
+
+/* ── Titre héros ─────────────────────────────────────────── */
+.hero-name {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(56px, 8vw, 100px);
+  font-weight: 800;
+  line-height: 0.93;
+  letter-spacing: -4px;
+  margin-bottom: 6px;
+}
+
+/* Texte en contour (nom en violet creux) */
+.hero-name .outline-text {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--accent);
+}
+
+/* ── Sous-titre ──────────────────────────────────────────── */
+.hero-sub {
+  font-family: 'DM Mono', monospace;
+  font-size: clamp(13px, 1.4vw, 15px);
+  color: var(--text2);
+  max-width: 500px;
+  line-height: 1.8;
+  margin-top: 26px;
+  margin-bottom: 44px;
+}
+
+/* ── Boutons d'action ────────────────────────────────────── */
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* ── Statistiques rapides ────────────────────────────────── */
+.hero-stats {
+  display: flex;
+  gap: 44px;
+  margin-top: 64px;
+  padding-top: 36px;
+  border-top: 1px solid var(--border);
+}
+
+.stat-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 34px;
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: -2px;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.stat-lbl {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--text3);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ── Ticker défilant ─────────────────────────────────────── */
+.ticker-wrap {
+  margin-top: 60px;
+  overflow: hidden;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 0;
+}
+
+.ticker-track {
+  display: flex;
+  gap: 0;
+  animation: ticker 22s linear infinite;
+  white-space: nowrap;
+}
+
+.ticker-item {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: var(--text3);
+  padding: 0 32px;
+  letter-spacing: 0.08em;
+}
+
+.ticker-item .dot {
+  color: var(--accent);
+  margin-right: 8px;
+}
+
+
+/* ╔══════════════════════════════════════════════════════════╗
+   ║  PAGE À PROPOS                                           ║
+   ╚══════════════════════════════════════════════════════════╝ */
+
+/* Grille : colonne avatar à gauche, contenu à droite */
+.about-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 36px;
+  align-items: start;
+}
+
+/* ── Carte avatar ────────────────────────────────────────── */
+.avatar-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px 20px;
+  text-align: center;
+  position: sticky; /* Reste visible pendant le défilement */
+  top: 28px;
+}
+
+/* Cercle avec initiales */
+.avatar-ring {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+  font-family: 'Syne', sans-serif;
+  font-size: 34px;
+  font-weight: 800;
+  color: #fff;
+  position: relative;
+}
+
+/* Anneau en pointillés tournant autour de l'avatar */
+.avatar-ring::after {
+  content: '';
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: 1px dashed rgba(var(--accent-rgb), 0.4);
+  animation: spin 10s linear infinite;
+}
+
+.avatar-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.avatar-role {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--accent);
+  margin-bottom: 22px;
+  line-height: 1.6;
+}
+
+/* ── Lignes d'info (email, localisation…) ────────────────── */
+.info-list  { text-align: left; }
+
+.info-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border2);
+  font-size: 13px;
+}
+
+.info-row:last-child { border-bottom: none; }
+
+.info-icon {
+  font-size: 14px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.info-key {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--text3);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.info-val {
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+/* ── Bio (texte avec bordure gauche accent) ──────────────── */
+.bio-text {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  font-size: 14px;
+  color: var(--text2);
+  line-height: 1.8;
+}
+
+/* ── Grille des qualités ─────────────────────────────────── */
+.qualities-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 14px;
+}
+
+.quality-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  text-align: center;
+  transition: border-color var(--transition), transform var(--transition);
+}
+
+.quality-card:hover {
+  border-color: rgba(var(--accent-rgb), 0.35);
+  transform: translateY(-3px);
+}
+
+.quality-icon { font-size: 28px; margin-bottom: 8px; }
+.quality-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .about-layout     { grid-template-columns: 1fr; }
+  .avatar-card      { position: static; }
+  .qualities-grid   { grid-template-columns: 1fr 1fr; }
+}
+
+
+/* ╔══════════════════════════════════════════════════════════╗
+   ║  PAGE FORMATION — Timeline                               ║
+   ╚══════════════════════════════════════════════════════════╝ */
+
+.timeline {
+  position: relative;
+  padding-left: 28px;
+}
+
+/* Ligne verticale de la timeline */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+}
+
+.tl-item {
+  position: relative;
+  margin-bottom: 32px;
+}
+
+/* Point sur la timeline */
+.tl-dot {
+  position: absolute;
+  left: -24px;
+  top: 6px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tl-dot::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.tl-date {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+
+.tl-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 26px;
+  transition: border-color var(--transition);
+}
+
+.tl-card:hover { border-color: rgba(var(--accent-rgb), 0.3); }
+
+.tl-loc {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--text3);
+  margin-bottom: 10px;
+}
+
+
+/* ╔══════════════════════════════════════════════════════════╗
+   ║  PAGE EXPÉRIENCES                                        ║
+   ╚══════════════════════════════════════════════════════════╝ */
+
+/* Carte d'expérience avec icône à gauche */
+.xp-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  margin-bottom: 18px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 20px;
+  align-items: start;
+  transition: border-color var(--transition), transform var(--transition);
+}
+
+.xp-card:hover {
+  border-color: rgba(var(--accent-rgb), 0.3);
+  transform: translateY(-2px);
+}
+
+/* Icône emoji dans un carré */
+.xp-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--glow);
+  border: 1px solid rgba(var(--accent-rgb), 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+/* Ligne de métadonnées (date, type, entreprise) */
+.xp-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.xp-date {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--text3);
+}
+
+.xp-type {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  padding: 2px 9px;
+  border-radius: 100px;
+  border: 1px solid rgba(var(--accent-rgb), 0.4);
+  color: var(--accent);
+}
+
+.xp-company {
+  font-size: 12px;
+  color: var(--text3);
+  font-family: 'DM Mono', monospace;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .xp-card { grid-template-columns: 1fr; }
+}
+
+
+/* ╔══════════════════════════════════════════════════════════╗
+   ║  PAGE COMPÉTENCES — Soft skills                          ║
+   ╚══════════════════════════════════════════════════════════╝ */
+
+.soft-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.soft-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 20px;
+  transition: border-color var(--transition), transform var(--transition);
+}
+
+.soft-card:hover {
+  border-color: rgba(var(--accent-rgb), 0.3);
+  transform: translateY(-2px);
+}
+
+.soft-icon { font-size: 26px; margin-bottom: 10px; }
+.soft-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 15px; margin-bottom: 6px; }
+.soft-desc { font-size: 13px; color: var(--text2); line-height: 1.6; }
+
+
+/* ╔══════════════════════════════════════════════════════════╗
+   ║  PAGE PROJETS                                            ║
+   ╚══════════════════════════════════════════════════════════╝ */
+
+.proj-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.proj-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: border-color var(--transition), transform var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Barre de couleur en haut de la carte au survol */
+.proj-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.proj-card:hover {
+  border-color: rgba(var(--accent-rgb), 0.3);
+  transform: translateY(-3px);
+}
+
+.proj-card:hover::before { opacity: 1; }
+
+.proj-emoji { font-size: 30px; }
+
+.proj-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.proj-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.proj-ctx {
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.6;
+}
+
+/* Banderole de résultat (note / score) */
+.proj-result {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: rgba(var(--accent3-rgb), 0.05);
+  border: 1px solid rgba(var(--accent3-rgb), 0.15);
+  border-radius: 8px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: var(--accent3);
+  margin-top: auto;
+}
+
+@media (max-width: 900px) {
+  .proj-grid { grid-template-columns: 1fr; }
+}
+
+
+/* ╔══════════════════════════════════════════════════════════╗
+   ║  PAGE DIVERS                                             ║
+   ╚══════════════════════════════════════════════════════════╝ */
+
+.divers-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.divers-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: border-color var(--transition), transform var(--transition);
+}
+
+.divers-card:hover {
+  border-color: rgba(var(--accent-rgb), 0.3);
+  transform: translateY(-2px);
+}
+
+.divers-icon  { font-size: 32px; margin-bottom: 12px; }
+.divers-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 16px; margin-bottom: 6px; }
+.divers-desc  { font-size: 13px; color: var(--text2); line-height: 1.7; }
+
+/* Badge de période (ex: "2020 – 2023") */
+.divers-period {
+  display: inline-block;
+  margin-top: 10px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--text3);
+  padding: 2px 8px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+.books-row {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.book-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text2);
+}
+
+@media (max-width: 900px) {
+  .divers-grid { grid-template-columns: 1fr; }
+}
+
+
+/* ╔══════════════════════════════════════════════════════════╗
+   ║  PAGE CV                                                 ║
+   ╚══════════════════════════════════════════════════════════╝ */
+
+/* Zone de téléchargement mise en avant */
+.cv-download-hero {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 48px;
+  text-align: center;
+  margin-bottom: 36px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Halo lumineux en haut de la carte */
+.cv-download-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(var(--accent-rgb), 0.12), transparent 60%);
+  pointer-events: none;
+}
+
+.cv-deco  { font-size: 64px; margin-bottom: 16px; }
+
+.cv-download-hero h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.cv-download-hero p {
+  max-width: 420px;
+  margin: 0 auto 28px;
+}
+
+/* ── Aperçu CV stylisé ───────────────────────────────────── */
+.cv-preview {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 40px;
+  font-size: 13px;
+}
+
+.cv-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Avatar carré dans le CV */
+.cv-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.cv-section { margin-bottom: 28px; }
+
+/* Titre de section CV avec ligne dessous */
+.cv-section-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 6px;
+  margin-bottom: 14px;
+}
+
+/* Ligne d'entrée CV (date + contenu) */
+.cv-entry {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.cv-entry-date {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--text3);
+  min-width: 90px;
+  line-height: 1.6;
+  margin-top: 1px;
+  flex-shrink: 0;
+}
+
+.cv-entry-title { font-weight: 600; font-size: 13px; margin-bottom: 2px; }
+.cv-entry-sub   { font-size: 12px; color: var(--text2); }
+
+@media (max-width: 900px) {
+  .cv-header-row { flex-direction: column; gap: 16px; }
+  .cv-download-hero { padding: 28px; }
+}
+
+
+/* ╔══════════════════════════════════════════════════════════╗
+   ║  PAGE CONTACT                                            ║
+   ╚══════════════════════════════════════════════════════════╝ */
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* Carte d'informations de contact */
+.contact-info-card,
+.contact-form-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px;
+}
+
+.contact-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border2);
+}
+
+.contact-row:last-child { border-bottom: none; }
+
+/* Icône dans un carré arrondi */
+.contact-icon-wrap {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: var(--glow);
+  border: 1px solid rgba(var(--accent-rgb), 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.contact-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--text3);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 3px;
+}
+
+.contact-value { font-size: 14px; color: var(--text); word-break: break-all; }
+.contact-value a { color: var(--accent); }
+.contact-value a:hover { text-decoration: underline; }
+
+@media (max-width: 900px) {
+  .contact-layout { grid-template-columns: 1fr; }
+}
