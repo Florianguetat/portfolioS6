@@ -1,0 +1,185 @@
+/* ============================================================
+   css/layout.css
+   Structure principale : sidebar de navigation verticale,
+   zone de contenu principal, en-têtes de pages.
+   ============================================================ */
+
+/* ── Sidebar ─────────────────────────────────────────────── */
+#sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 68px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0 24px;
+  z-index: 500;
+  gap: 4px;
+}
+
+/* Logo / initiales en haut de la sidebar */
+.sidebar-logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  color: var(--accent);
+  letter-spacing: -1.5px;
+  margin-bottom: 20px;
+}
+
+/* Séparateur horizontal */
+.sidebar-sep {
+  width: 28px;
+  height: 1px;
+  background: var(--border);
+  margin: 6px 0;
+}
+
+/* ── Boutons de navigation ───────────────────────────────── */
+.nav-btn {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  border: none;
+  background: transparent;
+  color: var(--text3);
+  cursor: none;
+  transition: all var(--transition);
+  gap: 3px;
+}
+
+.nav-btn svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* Micro-label sous l'icône */
+.nav-btn .nav-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+/* État hover */
+.nav-btn:hover {
+  background: var(--glow);
+  color: var(--accent-h);
+}
+
+/* État actif (page courante) */
+.nav-btn.active {
+  background: rgba(108, 99, 255, 0.18);
+  color: var(--accent);
+}
+
+/* Tooltip qui apparaît à droite au survol */
+.nav-btn .tooltip {
+  position: absolute;
+  left: 62px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-family: 'DM Mono', monospace;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 600;
+}
+
+.nav-btn:hover .tooltip {
+  opacity: 1;
+}
+
+/* Note : l'ancien sélecteur de langue (.lang-area, .lang-btn) a été
+   remplacé par le menu Options. Voir css/options.css et js/options.js. */
+
+/* ── Zone de contenu principale ─────────────────────────── */
+#main {
+  margin-left: 68px; /* Décalé de la largeur de la sidebar */
+}
+
+/* ── Pages individuelles ─────────────────────────────────── */
+.page {
+  display: none;          /* Cachée par défaut */
+  min-height: 100vh;
+  padding: 52px 56px 72px;
+  animation: pageIn 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Seule la page active est visible */
+.page.active {
+  display: block;
+}
+
+/* ── En-tête de page (titre + ligne décorative) ──────────── */
+.ph {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  margin-bottom: 52px;
+}
+
+.ph-left {
+  flex-shrink: 0;
+}
+
+/* Sous-titre au-dessus du titre principal */
+.ph-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+/* Titre principal de la page */
+.ph-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(36px, 4.5vw, 60px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+/* Ligne horizontale qui s'étire après le titre */
+.ph-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+  margin-bottom: 8px;
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .page {
+    padding: 36px 24px 60px;
+  }
+}
+
+@media (max-width: 600px) {
+  #sidebar {
+    width: 52px;
+  }
+  #main {
+    margin-left: 52px;
+  }
+  .sidebar-logo {
+    font-size: 16px;
+  }
+}
