@@ -21,30 +21,14 @@
   gap: 4px;
 }
 
-/* Logo en haut de la sidebar : photo circulaire de Florian */
+/* Logo / initiales en haut de la sidebar */
 .sidebar-logo {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  overflow: hidden;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  color: var(--accent);
+  letter-spacing: -1.5px;
   margin-bottom: 20px;
-  border: 2px solid var(--accent);
-  box-shadow: 0 0 0 3px var(--glow);
-  flex-shrink: 0;
-  transition: transform var(--transition), box-shadow var(--transition);
-}
-
-.sidebar-logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* Petit zoom au survol du logo */
-.sidebar-logo:hover {
-  transform: scale(1.06);
-  box-shadow: 0 0 0 4px var(--glow);
 }
 
 /* Séparateur horizontal */
@@ -196,7 +180,6 @@
     margin-left: 52px;
   }
   .sidebar-logo {
-    width: 32px;
-    height: 32px;
+    font-size: 16px;
   }
 }

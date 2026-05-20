@@ -182,40 +182,31 @@
   top: 28px;
 }
 
-/* Cercle photo principal (page À propos) */
+/* Cercle avec initiales */
 .avatar-ring {
-  width: 120px;
-  height: 120px;
+  width: 110px;
+  height: 110px;
   border-radius: 50%;
-  margin: 0 auto 18px;
-  position: relative;
-  overflow: hidden;
-  /* Anneau gradient autour de la photo */
   background: linear-gradient(135deg, var(--accent), var(--accent2));
-  padding: 3px;
-  box-shadow: 0 0 0 1px var(--border), 0 12px 30px rgba(0, 0, 0, 0.2);
-}
-
-.avatar-ring img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-  display: block;
-  /* Petite bordure intérieure assortie au fond pour séparer photo et gradient */
-  border: 3px solid var(--surface);
-  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+  font-family: 'Syne', sans-serif;
+  font-size: 34px;
+  font-weight: 800;
+  color: #fff;
+  position: relative;
 }
 
 /* Anneau en pointillés tournant autour de l'avatar */
 .avatar-ring::after {
   content: '';
   position: absolute;
-  inset: -8px;
+  inset: -5px;
   border-radius: 50%;
   border: 1px dashed rgba(var(--accent-rgb), 0.4);
-  animation: spin 14s linear infinite;
-  pointer-events: none;
+  animation: spin 10s linear infinite;
 }
 
 .avatar-name {
@@ -684,24 +675,20 @@
   border-bottom: 1px solid var(--border);
 }
 
-/* Avatar carré dans le CV : photo encadrée */
+/* Avatar carré dans le CV */
 .cv-avatar {
-  width: 84px;
-  height: 84px;
-  border-radius: 14px;
-  overflow: hidden;
-  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+  border-radius: 12px;
   background: linear-gradient(135deg, var(--accent), var(--accent2));
-  padding: 3px;
-  box-shadow: 0 8px 24px rgba(var(--accent-rgb), 0.18);
-}
-
-.cv-avatar img {
-  width: 100%;
-  height: 100%;
-  border-radius: 11px;
-  object-fit: cover;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  color: #fff;
+  flex-shrink: 0;
 }
 
 .cv-section { margin-bottom: 28px; }
