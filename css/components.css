@@ -1,0 +1,247 @@
+/* ============================================================
+   css/components.css
+   Composants réutilisables : cartes, boutons, tags, grilles,
+   barres de compétences, formulaire de contact.
+   ============================================================ */
+
+/* ── Carte générique ─────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  transition: border-color var(--transition), transform var(--transition);
+}
+
+.card:hover {
+  border-color: rgba(var(--accent-rgb), 0.3);
+  transform: translateY(-2px);
+}
+
+/* ── Grilles rapides ─────────────────────────────────────── */
+.g2 { display: grid; grid-template-columns: 1fr 1fr;       gap: 18px; }
+.g3 { display: grid; grid-template-columns: 1fr 1fr 1fr;   gap: 16px; }
+
+@media (max-width: 900px) {
+  .g2, .g3 { grid-template-columns: 1fr; }
+}
+
+/* ── Tags / Badges ───────────────────────────────────────── */
+.tag {
+  display: inline-block;
+  padding: 3px 11px;
+  border-radius: 100px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  border: 1px solid var(--border);
+  color: var(--text2);
+  margin: 3px 2px;
+}
+
+/* Variante accent (violet) */
+.tag-accent {
+  border-color: rgba(var(--accent-rgb), 0.5);
+  color: var(--accent);
+  background: rgba(var(--accent-rgb), 0.08);
+}
+
+/* Variante succès (utilise --accent3, vert ou jaune doré selon thème) */
+.tag-green {
+  border-color: rgba(var(--accent3-rgb), 0.4);
+  color: var(--accent3);
+  background: rgba(var(--accent3-rgb), 0.06);
+}
+
+/* Variante alerte (utilise --accent2, rouge ou orange selon thème) */
+.tag-red {
+  border-color: rgba(var(--accent2-rgb), 0.4);
+  color: var(--accent2);
+  background: rgba(var(--accent2-rgb), 0.06);
+}
+
+/* ── Boutons ─────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 26px;
+  border-radius: 9px;
+  font-family: 'Figtree', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all var(--transition);
+  border: none;
+  text-decoration: none;
+}
+
+/* Bouton principal (fond accent) */
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--accent-h);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(var(--accent-rgb), 0.35);
+}
+
+/* Bouton fantôme (bordure seulement) */
+.btn-ghost {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ── Titre de section (avec ligne décorative) ────────────── */
+.section-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Ligne qui s'étend après le titre de section */
+.section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── Barres de compétences ───────────────────────────────── */
+.skill-item {
+  margin-bottom: 18px;
+}
+
+.skill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 6px;
+}
+
+.skill-name {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Pourcentage affiché à droite */
+.skill-pct {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: var(--accent);
+}
+
+/* Fond de la barre */
+.skill-bar {
+  height: 6px;
+  background: var(--surface2);
+  border-radius: 100px;
+  overflow: hidden;
+  border: 1px solid var(--border2);
+}
+
+/* Remplissage de la barre — animé par JS */
+.skill-fill {
+  height: 100%;
+  border-radius: 100px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-h));
+  transform-origin: left;
+  transform: scaleX(0);          /* Démarre à 0, animé par skills.js */
+  transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Classe ajoutée par JS pour déclencher l'animation */
+.skill-fill.animated {
+  transform: scaleX(1);
+}
+
+/* Groupe de tags sous une barre */
+.tools-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+/* ── Formulaire de contact ───────────────────────────────── */
+.form-label {
+  display: block;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--text3);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+  margin-top: 18px;
+}
+
+.form-label:first-child {
+  margin-top: 0;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 12px 16px;
+  color: var(--text);
+  font-family: 'Figtree', sans-serif;
+  font-size: 14px;
+  transition: border-color var(--transition);
+  outline: none;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: var(--accent);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.form-submit {
+  width: 100%;
+  margin-top: 18px;
+  padding: 14px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 9px;
+  font-family: 'Figtree', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  transition: all var(--transition);
+}
+
+.form-submit:hover {
+  background: var(--accent-h);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(var(--accent-rgb), 0.3);
+}
+
+/* Message de retour sous le formulaire */
+#form-msg {
+  text-align: center;
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  margin-top: 12px;
+  color: var(--accent3);
+  display: none;
+}
