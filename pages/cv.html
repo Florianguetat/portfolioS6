@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<!-- pages/cv.html — Portfolio Florian GUETAT -->
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Applique le thème + la langue AVANT le rendu CSS (évite tout flash) -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("portfolio-theme") || "dark";
+        document.documentElement.setAttribute("data-theme", t);
+        var l = localStorage.getItem("portfolio-lang");
+        if (l) document.documentElement.setAttribute("lang", l);
+      } catch (e) {}
+    })();
+  </script>
+  <title data-key="doctitle-cv">CV | Florian GUETAT</title>
+  <meta name="description" content="CV de Florian Guetat, étudiant BUT R&amp;T et alternant administrateur Linux : formation, expériences et compétences, à télécharger en PDF.">
+  <meta name="author" content="Florian Guetat">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0a0b14">
+  <link rel="canonical" href="cv.html">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="apple-touch-icon" href="../assets/photo.jpg">
+  <!-- Open Graph / reseaux sociaux -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Florian Guetat - Portfolio">
+  <meta property="og:title" content="CV | Florian GUETAT">
+  <meta property="og:description" content="CV de Florian Guetat, étudiant BUT R&amp;T et alternant administrateur Linux : formation, expériences et compétences, à télécharger en PDF.">
+  <meta property="og:url" content="cv.html">
+  <meta property="og:image" content="../assets/photo.jpg">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CV | Florian GUETAT">
+  <meta name="twitter:description" content="CV de Florian Guetat, étudiant BUT R&amp;T et alternant administrateur Linux : formation, expériences et compétences, à télécharger en PDF.">
+  <meta name="twitter:image" content="../assets/photo.jpg">
+  <!-- Google Fonts : Syne (titres) + DM Mono (etiquettes) + Figtree (corps) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Feuilles de styles (ordre important) -->
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <link rel="stylesheet" href="../css/options.css">
+  <!-- URLs canoniques / partage calculees automatiquement (independant du nom du dossier) -->
+  <script defer src="../js/seo.js"></script>
+</head>
+<body>
+  <div id="cursor"></div>
+  <div id="cursor-trail"></div>
+  <div id="translate-bar"><div id="translate-progress"></div></div>
+
+  <nav id="sidebar">
+    <div class="sidebar-logo"><img src="../assets/photo.jpg" alt="Florian GUETAT"></div>
+    <div class="sidebar-sep"></div>
+    <button class="nav-btn" data-page="accueil" onclick="goTo('accueil.html')" title="Accueil">
+      <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span class="nav-label" data-key="nav-accueil">accueil</span>
+      <span class="tooltip" data-key="nav-accueil">Accueil</span>
+    </button>
+    <button class="nav-btn" data-page="apropos" onclick="goTo('apropos.html')" title="À propos">
+      <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <span class="nav-label" data-key="nav-apropos">à propos</span>
+      <span class="tooltip" data-key="nav-apropos">À propos</span>
+    </button>
+    <button class="nav-btn" data-page="formation" onclick="goTo('formation.html')" title="Formation">
+      <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+      <span class="nav-label" data-key="nav-formation">formation</span>
+      <span class="tooltip" data-key="nav-formation">Formation</span>
+    </button>
+    <button class="nav-btn" data-page="experiences" onclick="goTo('experiences.html')" title="Expériences">
+      <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+      <span class="nav-label" data-key="nav-exp">expériences</span>
+      <span class="tooltip" data-key="nav-exp">Expériences</span>
+    </button>
+    <button class="nav-btn" data-page="competences" onclick="goTo('competences.html')" title="Compétences">
+      <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      <span class="nav-label" data-key="nav-comp">compétences</span>
+      <span class="tooltip" data-key="nav-comp">Compétences</span>
+    </button>
+    <button class="nav-btn" data-page="projets" onclick="goTo('projets.html')" title="Projets">
+      <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+      <span class="nav-label" data-key="nav-projets">projets</span>
+      <span class="tooltip" data-key="nav-projets">Projets</span>
+    </button>
+    <button class="nav-btn" data-page="divers" onclick="goTo('divers.html')" title="Divers">
+      <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>
+      <span class="nav-label" data-key="nav-divers">divers</span>
+      <span class="tooltip" data-key="nav-divers">Divers</span>
+    </button>
+    <button class="nav-btn active" data-page="cv" onclick="goTo('cv.html')" title="CV">
+      <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      <span class="nav-label">cv</span>
+      <span class="tooltip">CV</span>
+    </button>
+    <button class="nav-btn" data-page="contact" onclick="goTo('contact.html')" title="Contact">
+      <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      <span class="nav-label" data-key="nav-contact">contact</span>
+      <span class="tooltip" data-key="nav-contact">Contact</span>
+    </button>
+  </nav>
+
+  <main id="main">
+    <section id="page-cv" class="page active">
+      <!-- En-tête de page -->
+      <div class="ph">
+        <div class="ph-left">
+          <div class="ph-eyebrow" data-key="ph-cv-ey">Curriculum Vitae</div>
+          <h1 class="ph-title" data-key="ph-cv-t">Mon CV</h1>
+        </div>
+        <div class="ph-line"></div>
+      </div>
+      <!-- Contenu -->
+
+      <div class="cv-download-hero">
+        <div class="cv-deco">📄</div>
+        <h2 data-key="cv-dl-t">Télécharger mon CV</h2>
+        <p data-key="cv-dl-d">Retrouvez l'ensemble de mon parcours académique, professionnel et mes compétences au format PDF.</p>
+        <a class="btn btn-primary" href="../assets/cv/CV-Florian-GUETAT.pdf" target="_blank" rel="noopener">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span data-key="cv-dl-btn">Télécharger le PDF</span>
+        </a>
+      </div>
+      <div class="cv-preview">
+        <div class="cv-header-row">
+          <div>
+            <div style="font-family:'Syne',sans-serif;font-size:26px;font-weight:800;letter-spacing:-1px;margin-bottom:4px;">Florian GUETAT</div>
+            <div style="font-family:'DM Mono',monospace;font-size:12px;color:var(--accent);" data-key="cv-role">Étudiant BUT Réseaux &amp; Télécoms — Alternant Admin Linux</div>
+            <div style="font-size:12px;color:var(--text3);margin-top:8px;font-family:'DM Mono',monospace;">Florian.GUETAT@etu.uca.fr · florian.guetat@ntn-snr.fr</div>
+          </div>
+          <div class="cv-avatar"><img src="../assets/photo.jpg" alt="Florian GUETAT"></div>
+        </div>
+        <div class="cv-section">
+          <h2 class="cv-section-title" data-key="cv-s-form">Formation</h2>
+          <div class="cv-entry"><div class="cv-entry-date">2023 → <span data-key="now3">Auj.</span></div><div><div class="cv-entry-title">BUT Réseaux &amp; Télécommunications</div><div class="cv-entry-sub">IUT Aubière — Université Clermont Auvergne (63)</div></div></div>
+          <div class="cv-entry"><div class="cv-entry-date">Juin 2023</div><div><div class="cv-entry-title" data-key="cv-bac">Baccalauréat Général — Mention Assez Bien</div><div class="cv-entry-sub">Lycée Louis Lachenal, Argonay (74) · Spé. Maths + NSI</div></div></div>
+        </div>
+        <div class="cv-section">
+          <h2 class="cv-section-title" data-key="cv-s-xp">Expériences</h2>
+          <div class="cv-entry"><div class="cv-entry-date">2024 → <span data-key="now4">Auj.</span></div><div><div class="cv-entry-title" data-key="cv-xp1">Administrateur Système Linux (Alternance)</div><div class="cv-entry-sub">NTN Europe, Annecy (74)</div></div></div>
+          <div class="cv-entry"><div class="cv-entry-date">2020 – 2023</div><div><div class="cv-entry-title" data-key="cv-xp2">Arbitre Régional Football</div><div class="cv-entry-sub">US Pringy (74) — Ligue AuRA</div></div></div>
+          <div class="cv-entry"><div class="cv-entry-date">2020 – 2021</div><div><div class="cv-entry-title" data-key="cv-xp3">Entraîneur Football U10/U11</div><div class="cv-entry-sub">US Pringy (74)</div></div></div>
+        </div>
+        <div class="cv-section">
+          <h2 class="cv-section-title" data-key="cv-s-comp">Compétences</h2>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <span class="tag tag-accent">Linux</span><span class="tag tag-accent">Python</span><span class="tag tag-accent">Bash</span><span class="tag tag-accent" data-key="t-reseaux">Réseaux</span><span class="tag tag-accent">VLAN</span><span class="tag tag-accent">VPN</span><span class="tag tag-accent" data-key="t-cyber">Cybersécurité</span><span class="tag tag-accent">HTML/CSS/JS</span><span class="tag tag-accent">Java</span><span class="tag tag-accent">PHP</span><span class="tag">VoIP</span><span class="tag">QoS</span>
+          </div>
+        </div>
+        <div class="cv-section">
+          <h2 class="cv-section-title" data-key="cv-s-lang">Langues</h2>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <span class="tag tag-green">🇫🇷 <span data-key="t-fr-native">Français — Natif</span></span><span class="tag tag-accent">🇬🇧 <span data-key="t-en-fluent">Anglais — Courant</span></span><span class="tag">🇪🇸 <span data-key="t-es">Espagnol</span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="../js/navigation.js"></script>
+  <script src="../js/skills.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/options.js"></script>
+  <script src="../js/lang.js"></script>
+  <script src="../js/contact.js"></script>
+</body>
+</html>
