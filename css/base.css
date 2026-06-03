@@ -1,0 +1,221 @@
+/* ============================================================
+   css/base.css
+   Reset CSS, typographie de base, scrollbar personnalisée,
+   curseur animé, couche de bruit (noise overlay).
+   ============================================================ */
+
+/* ── Reset universel ─────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ── Corps principal ─────────────────────────────────────── */
+body {
+  font-family: 'Figtree', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  /* Le curseur natif reste par défaut ; il n'est masqué (et remplacé par le
+     curseur personnalisé) que sur les appareils à pointeur fin, via main.js. */
+}
+
+/* ── Typographie générale ───────────────────────────────── */
+h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+h4 {
+  font-family: 'Syne', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+p, li {
+  line-height: 1.7;
+  color: var(--text2);
+  font-size: 14px;
+}
+
+/* ── Scrollbar personnalisée ─────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(var(--accent-rgb), 0.4);
+}
+
+/* ── Curseur personnalisé ────────────────────────────────── */
+/* Point central — masqué par défaut, affiché par main.js si pointeur fin */
+#cursor {
+  display: none;
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s, opacity 0.2s;
+}
+
+/* Anneau qui suit avec un léger retard — masqué par défaut */
+#cursor-trail {
+  display: none;
+  position: fixed;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.35s ease, width 0.3s, height 0.3s, opacity 0.3s;
+  opacity: 0.45;
+}
+
+/* État hover : le curseur grossit légèrement */
+body.cursor-hover #cursor {
+  transform: translate(-50%, -50%) scale(2.5);
+  opacity: 0.5;
+}
+body.cursor-hover #cursor-trail {
+  width: 52px;
+  height: 52px;
+  opacity: 0.2;
+}
+
+/* ── Couche de bruit (texture grain) ────────────────────── */
+/* Superposée à tout le contenu via un pseudo-élément */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9990;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  opacity: 0.5;
+}
+
+/* ── Barre de progression de traduction ─────────────────── */
+/* Fine barre colorée en haut de page pendant le chargement */
+#translate-bar {
+  position: fixed;
+  top: 0;
+  left: 68px;
+  right: 0;
+  height: 3px;
+  background: transparent;
+  z-index: 800;
+}
+#translate-progress {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  transition: width 0.3s ease;
+  border-radius: 0 2px 2px 0;
+}
+
+/* ── Animation d'entrée des pages ───────────────────────── */
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* ── Ticker défilant (page accueil) ─────────────────────── */
+@keyframes ticker {
+  from { transform: translateX(0);    }
+  to   { transform: translateX(-50%); }
+}
+
+/* ── Orbes flottantes (page accueil) ────────────────────── */
+@keyframes orb-float {
+  0%, 100% { transform: translateY(0)    scale(1);    }
+  50%       { transform: translateY(-28px) scale(1.06); }
+}
+
+/* ── Rotation de l'anneau autour de l'avatar ────────────── */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Responsive — points de rupture ─────────────────────── */
+@media (max-width: 600px) {
+  #sidebar    { width: 52px; }
+  #main       { margin-left: 52px; }
+  #translate-bar { left: 52px; }
+}
+
+
+/* ════════════════════════════════════════════════════════════
+   AJOUTS ACCESSIBILITÉ
+   ════════════════════════════════════════════════════════════ */
+
+/* ── Curseur personnalisé : uniquement sur appareils à pointeur fin ──
+   main.js ajoute la classe .js-cursor sur <html>. Si le JS échoue ou si
+   l'appareil est tactile, le curseur natif reste donc toujours visible. */
+@media (hover: hover) and (pointer: fine) {
+  html.js-cursor,
+  html.js-cursor * { cursor: none; }
+  html.js-cursor #cursor,
+  html.js-cursor #cursor-trail { display: block; }
+}
+
+/* ── Visibilité du focus clavier (WCAG 2.4.7) ──
+   Anneau de focus net pour la navigation au clavier. */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+/* Pas d'anneau pour le focus à la souris (uniquement au clavier) */
+:focus:not(:focus-visible) { outline: none; }
+
+/* ── Titres de cartes (h2 sans classe) ──
+   Reproduit le rendu des anciens <h3> ; les h2 portant une classe
+   (.section-title, .proj-title, etc.) gardent leur propre style. */
+h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+/* ── Respect de « prefers-reduced-motion » (WCAG 2.3.3) ──
+   Neutralise les animations infinies (ticker, orbes, rotation) et le
+   défilement lissé pour les personnes sensibles au mouvement. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  html { scroll-behavior: auto; }
+}
